@@ -1,2 +1,2 @@
 # farm
-directory with stuff for serious farm
+directory with stuff for "Farm Craft"
