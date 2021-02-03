@@ -1,5 +1,5 @@
 ﻿
 public interface IValuable
 {
-    int Price { get; set; }
+    ProductItemsList Price { get; set; }
 }

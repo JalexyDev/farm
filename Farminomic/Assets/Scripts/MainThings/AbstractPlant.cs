@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,9 +7,14 @@ public abstract class AbstractPlant : MonoBehaviour, IShowable
     [Header("Информации о растении")]
     public MenuShowItem menuShowItem;
 
-    [Header("Продукты получаемые при удалении или сборе")]
-    public List<RawEatableProduct> RawEatableProducts;
-    public List<RawMaterialProduct> RawMaterials;
+    [Header("Получаемые продукты")]
+    public ProductItemsList InterruptProducts;
+    public ProductItemsList FinishProducts;
+
+    [Header("Множители получаемых продуктов")]
+    public float MinFactor = 1;
+    public float MaxFactor = 1.1f;
+    public float StepForFactor;
 
     protected StateSwitcher stateSwitcher;
     protected PlantsController controller;

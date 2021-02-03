@@ -109,13 +109,15 @@ public class StateSwitcher : MonoBehaviour, ITimeReceiver
     {
         currentState = state;
 
+        //todo заменить на AddMinutes
+
         if (nextStateDate == DateTime.MinValue)
         {
-            nextStateDate = GetTimeController().GetCurrentTime().AddMinutes(currentState.DurationMinutes);
+            nextStateDate = GetTimeController().GetCurrentTime().AddSeconds(currentState.DurationMinutes);
         }
         else
         {
-            nextStateDate = nextStateDate.AddMinutes(currentState.DurationMinutes);
+            nextStateDate = nextStateDate.AddSeconds(currentState.DurationMinutes);
         }
     }
 

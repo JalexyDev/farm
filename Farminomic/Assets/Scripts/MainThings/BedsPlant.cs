@@ -48,6 +48,7 @@ public class BedsPlant : AbstractPlant
         return (TimeState) =>
         {
             //todo удалить с грядки мб перенести "Мусор" игроку
+            GetPlantsController().AddRecources(InterruptProducts * MaxFactor);
             Destroy(gameObject);
         };
     }

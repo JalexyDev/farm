@@ -69,15 +69,9 @@ public class ControlPanel : MonoBehaviour
         btns.Sort((x, y) => x.Part.CompareTo(y.Part));
     }
 
-    public void ShowPrice(int price)
+    public void ShowPrice(ProductItemsList products)
     {
-        if (priceLayoutInstance == null)
-        {
-            priceLayoutInstance = Instantiate(PriceLayout);
-            priceLayoutInstance.transform.SetParent(content, false);
-        }
-
-        priceLayoutInstance.GetComponentInChildren<Text>().text = price.ToString();
+        //todo переделать показ цены
     }
 
     public void Close()

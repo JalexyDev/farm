@@ -8,7 +8,7 @@ public class BedsSimple : Building
     private BedsPlantPlacable[] planted;
     private BedsPlant[] potentiallyPlant;
     private BedsPlantPreview[] previews;
-    private int AcceptPrice;
+    private ProductItemsList AcceptPrice;
 
     private PlantsController plantsController;
 
@@ -42,7 +42,7 @@ public class BedsSimple : Building
         {
             Function function = new Function(plant.menuShowItem.Information, () =>
             {
-                if (GetPlantsController().IsEnoughMoney(plant.menuShowItem.Price))
+                if (GetPlantsController().IsResourcesEnough(plant.menuShowItem.Price))
                 {
                     PlacePlantPreview(plant);
                 }
@@ -59,7 +59,7 @@ public class BedsSimple : Building
     {
         MenuShowItem placingMenuItem = new MenuShowItem(plant.menuShowItem.Information, null, null, AcceptPrice);
 
-        ControlBtn accept = new ControlBtn(ControlPanelPart.ACCEPT, AcceptPrice > 0 && GetPlantsController().IsEnoughMoney(AcceptPrice), () =>
+        ControlBtn accept = new ControlBtn(ControlPanelPart.ACCEPT, AcceptPrice != null && GetPlantsController().IsResourcesEnough(AcceptPrice), () =>
         {
             AcceptPlacing();
         });
@@ -89,6 +89,11 @@ public class BedsSimple : Building
             Vector3 position = places[i].position;
             previews[i] = Instantiate(plant.Preview, position, Quaternion.identity);
 
+            if (AcceptPrice == null)
+            {
+                AcceptPrice = new ProductItemsList();
+            }
+
             AcceptPrice += plant.menuShowItem.Price;
 
             break;
@@ -107,7 +112,7 @@ public class BedsSimple : Building
     public void AcceptPlacing()
     {
         //todo выполнять если стоимость <= баланса. Иначе намекнуть что нельзя.
-        if (GetPlantsController().IsEnoughMoney(AcceptPrice))
+        if (GetPlantsController().IsResourcesEnough(AcceptPrice))
         {
             BedsPlantPreview preview;
 
@@ -124,9 +129,9 @@ public class BedsSimple : Building
                     //todo придумать как лучше потратить деньги. Сделать статический Stock и чтобы он сам отправлял на сервер запросы
                     //todo сообщить серверу о посадке (чтобы добавить в БД)
 
-                    GetPlantsController().SpendMoney(AcceptPrice);
+                    GetPlantsController().SpendRecources(AcceptPrice);
 
-                    AcceptPrice = 0;
+                    AcceptPrice = null;
 
                     planted[i] = plantInstance;
                     potentiallyPlant[i] = null;
@@ -153,7 +158,7 @@ public class BedsSimple : Building
 
             if (preview != null)
             {
-                AcceptPrice = 0;
+                AcceptPrice = null;
 
                 potentiallyPlant[i] = null;
                 previews[i] = null;

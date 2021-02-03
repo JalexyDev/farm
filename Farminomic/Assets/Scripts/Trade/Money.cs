@@ -1,20 +1,27 @@
-﻿
+﻿using UnityEngine;
 using System;
 
 [Serializable]
-public class Money : AbstractProduct
+public class Money : Product
 {
-    private Money(int count)
+    [SerializeField] private int currentCount;
+
+    public int Count { get => currentCount; set => currentCount = value; }
+
+    public int Add(int count)
     {
-        currentCount = count;
+        currentCount += count;
+        return currentCount;
     }
 
-    //todo позже название брать либо из xml с локализацией либо из БД
-    public override string Name => "Деньги";
-
-    public override IExchangable Get(int count)
+    public int Spend(int count)
     {
-        Spend(count);
-        return new Money(count);
+        currentCount -= count;
+        return currentCount;
+    }
+
+    public bool IsEnoughForExchange(int count)
+    {
+        return currentCount >= count;
     }
 }

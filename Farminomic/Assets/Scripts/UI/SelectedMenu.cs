@@ -15,7 +15,7 @@ public class SelectedMenu : MonoBehaviour
     public void ShowRootMenu(MenuShowItem item)
     {
         lastMenuShowItem = item;
-        lastMenuShowItem.Price = 0;
+        lastMenuShowItem.Price = null;
         ShowMenu(item);
     }
 
@@ -36,7 +36,7 @@ public class SelectedMenu : MonoBehaviour
             ShowControls(item.ControlBtns);
         }
 
-        if (item.Price != 0)
+        if (item.Price != null)
         {
             ShowPrice(item.Price);
         }
@@ -72,10 +72,10 @@ public class SelectedMenu : MonoBehaviour
         FunctionPanel.ShowFunctions(functions);
     }
 
-    public void ShowPrice(int price)
+    public void ShowPrice(ProductItemsList products)
     {
         ControlPanel.gameObject.SetActive(true);
-        ControlPanel.ShowPrice(price);
+        ControlPanel.ShowPrice(products);
     }
 
     private void ShowControls(List<ControlBtn> controlBtns)

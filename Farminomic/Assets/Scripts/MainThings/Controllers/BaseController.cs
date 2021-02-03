@@ -27,9 +27,9 @@ public abstract class BaseController : MonoBehaviour
         GetMenu().CloseRootMenu();
     }
 
-    public void ShowPrice(int price)
+    public void ShowPrice(ProductItemsList products)
     {
-        GetMenu().ShowPrice(price);
+        GetMenu().ShowPrice(products);
     }
 
     public void StartPlacing(GroundPlacablePreview placablePrefab)
@@ -37,14 +37,19 @@ public abstract class BaseController : MonoBehaviour
         GetPlacer().StartPlacing(placablePrefab);
     }
 
-    public bool IsEnoughMoney(int price)
+    public bool IsResourcesEnough(ProductItemsList products)
     {
-        return GetPlacer().IsEnoughMoney(price);
+        return GetPlacer().IsResourcesEnough(products);
     }
 
-    public void SpendMoney(int count)
+    public void SpendRecources(ProductItemsList products)
     {
-        GetPlacer().SpendMoney(count);
+        GetPlacer().SpendRecources(products);
+    }
+
+    public void AddRecources(ProductItemsList products)
+    {
+        GetPlacer().AddRecources(products);
     }
 
     public Camera GetMainCamera()

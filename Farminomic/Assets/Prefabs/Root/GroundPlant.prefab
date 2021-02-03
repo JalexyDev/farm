@@ -85,13 +85,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuShowItem:
-    ShowingPrice: 0
+    ShowingPrice:
+      productItems: []
     Information:
       Name: 
-      Icon: {fileID: 0}
       Description: 
-  RawEatableProducts: []
-  RawMaterials: []
+      Icon: {fileID: 0}
+  StateIndexWithoutProduct: 0
   Preview: {fileID: 0}
 --- !u!114 &7933716267336751577
 MonoBehaviour:

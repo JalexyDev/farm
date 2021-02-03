@@ -4,23 +4,25 @@ using System.Collections.Generic;
 [Serializable]
 public class MenuShowItem : IValuable
 {
-    public int ShowingPrice;
+    public ProductItemsList ShowingPrice;
     public Information Information;
     private List<Function> functions;
     private List<ControlBtn> controlBtns;
 
-    public MenuShowItem(Information information, List<Function> functions, List<ControlBtn> controlBtns, int price = 0)
+    public MenuShowItem(Information information, List<Function> functions, List<ControlBtn> controlBtns, ProductItemsList showingPrice = null)
     {
         Information = information;
         this.functions = functions;
         this.controlBtns = controlBtns;
-        ShowingPrice = price;
+        ShowingPrice = showingPrice;
     }
+
+    public MenuShowItem() { }
 
     public List<Function> Functions { get => functions; set => functions = value; }
     public List<ControlBtn> ControlBtns { get => controlBtns; set => controlBtns = value; }
 
-    public int Price { get => ShowingPrice; set => ShowingPrice = value; }
+    public ProductItemsList Price { get => ShowingPrice; set => ShowingPrice = value; }
 
     public void AddFunction(Function function)
     {

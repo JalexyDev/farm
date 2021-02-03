@@ -9,7 +9,7 @@ public class Home : Building
         {
             Function function = new Function(building.menuShowItem.Information, () =>
             {
-                if (GetBuildingController().IsEnoughMoney(building.menuShowItem.Price))
+                if (GetBuildingController().IsResourcesEnough(building.menuShowItem.Price))
                 {
                     Camera camera = GetBuildingController().GetMainCamera();
 

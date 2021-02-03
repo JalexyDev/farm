@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class StockController : MonoBehaviour
 {
     public static StockController Instance;
-    
-    public Money Money;
-    private MoneyLayout moneyLayout;
+
+    [SerializeField] private ProductItemsList productItemsList;
 
     private void Awake()
     {
@@ -23,42 +23,56 @@ public class StockController : MonoBehaviour
         InitStock();
     }
 
-    private void Start()
-    {
-        GetMoneyLayout().ShowMoneyCount(Money.Count);
-    }
-
     //todo считываем данные из БД
     private void InitStock()
     {
         
     }
 
-    public bool SpendMoney(int count)
+    public void AddRecources(ProductItemsList products)
     {
-        if (IsMoneyEnough(count))
-        {
-            Money.Spend(count);
-            GetMoneyLayout().ShowMoneyCount(Money.Count);
+        var currentList = GetProductItemsList();
+        productItemsList = currentList + products;
+    }
 
+    public bool SpendRecources(ProductItemsList products)
+    {
+        if (IsResourcesEnough(products))
+        {
+            productItemsList = GetStockDifference(products);
             return true;
         }
 
         return false;
     }
 
-    public bool IsMoneyEnough(int count)
+    public bool IsResourcesEnough(ProductItemsList products)
     {
-        return Money.IsEnoughForExchange(count);
-    }
+        ProductItemsList difference = GetStockDifference(products);
 
-    private MoneyLayout GetMoneyLayout()
-    {
-        if (moneyLayout == null)
+        foreach (ProductItem item in difference.ProductItems)
         {
-            moneyLayout = GameObject.FindGameObjectWithTag("MainInterface").GetComponentInChildren<MoneyLayout>();
+            if (item.Count < 0)
+            {
+                return false;
+            }
         }
 
-        return moneyLayout;
+        return true;
+    }
+
+    public ProductItemsList GetStockDifference(ProductItemsList products)
+    {
+        return GetProductItemsList() - products;
+    }
+
+    public ProductItemsList GetProductItemsList()
+    {
+        if (productItemsList == null)
+        {
+            productItemsList = new ProductItemsList();
+        }
+
+        return productItemsList;
     }
 }

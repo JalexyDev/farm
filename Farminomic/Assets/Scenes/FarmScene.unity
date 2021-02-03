@@ -121,6 +121,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10091377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10091380}
+  - component: {fileID: 10091379}
+  m_Layer: 0
+  m_Name: StockController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &10091379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10091377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4471c9b62ac2b1444b424e66d38e77b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productItemsList:
+    productItems: []
+--- !u!4 &10091380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10091377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88472807
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,23 +195,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06547f0d1b74639499bc3f49671dff7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawEatableProducts:
-  - icon: {fileID: 21300000, guid: 1ee63c3f848c6df4790401c3111cd97c, type: 3}
-    examplePrice: 10
-    currentCount: 0
-    prodName: 0
-  - icon: {fileID: 21300000, guid: 3eb6fc4523face54c83f27452de4af9c, type: 3}
-    examplePrice: 5
-    currentCount: 0
-    prodName: 1
-  - icon: {fileID: 21300000, guid: 9728b41b5ae0e694cad635868a76cd4c, type: 3}
-    examplePrice: 12
-    currentCount: 0
-    prodName: 2
-  rawMaterialProducts: []
-  eatableProducts: []
-  liquidEtableProducts: []
-  materialProducts: []
+  Products:
+  - Quality: 0
+    Type: 0
+    EnumName: Apple
+    menuShowItem:
+      ShowingPrice:
+        productItems:
+        - Name: 1
+          Count: 0
+          Product:
+            Quality: 0
+            Type: 0
+            EnumName: 
+            menuShowItem:
+              ShowingPrice:
+                productItems: []
+              Information:
+                Name: 
+                Description: 
+                Icon: {fileID: 0}
+        - Name: 0
+          Count: 0
+          Product:
+            Quality: 0
+            Type: 0
+            EnumName: 
+            menuShowItem:
+              ShowingPrice:
+                productItems: []
+              Information:
+                Name: 
+                Description: 
+                Icon: {fileID: 0}
+      Information:
+        Name: 
+        Description: 
+        Icon: {fileID: 0}
+  - Quality: 1
+    Type: 0
+    EnumName: Pear
+    menuShowItem:
+      ShowingPrice:
+        productItems: []
+      Information:
+        Name: 
+        Description: 
+        Icon: {fileID: 0}
+  - Quality: 2
+    Type: 0
+    EnumName: Banana
+    menuShowItem:
+      ShowingPrice:
+        productItems: []
+      Information:
+        Name: 
+        Description: 
+        Icon: {fileID: 0}
+  - Quality: 3
+    Type: 0
+    EnumName: PassionFruit
+    menuShowItem:
+      ShowingPrice:
+        productItems: []
+      Information:
+        Name: 
+        Description: 
+        Icon: {fileID: 0}
 --- !u!4 &88472809
 Transform:
   m_ObjectHideFlags: 0
@@ -180,64 +275,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &277565716
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277565718}
-  - component: {fileID: 277565717}
-  m_Layer: 0
-  m_Name: DeleteOnReleaseHelper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &277565717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277565716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95de2f82e3dcfb44692b6af4443125f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productController: {fileID: 88472808}
-  rawEatableProducts:
-  - Name: Apples
-    Icon: {fileID: 21300000, guid: 1ee63c3f848c6df4790401c3111cd97c, type: 3}
-    ExamplePrice: 10
-  - Name: Blueberries
-    Icon: {fileID: 21300000, guid: 3eb6fc4523face54c83f27452de4af9c, type: 3}
-    ExamplePrice: 5
-  - Name: Tomato
-    Icon: {fileID: 21300000, guid: 9728b41b5ae0e694cad635868a76cd4c, type: 3}
-    ExamplePrice: 12
-  rawMaterialProducts: []
-  eatableProducts: []
-  liquidEtableProducts: []
-  materialProducts: []
---- !u!4 &277565718
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277565716}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496732152
 GameObject:
@@ -440,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 5509286033592858549, guid: 42c2768055969c2428f12b8ca24aabf8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5509286033592858549, guid: 42c2768055969c2428f12b8ca24aabf8,
         type: 3}
@@ -747,7 +784,7 @@ PrefabInstance:
     - target: {fileID: 8227428331772291719, guid: b5070730e91411f4db6a1b969e8d3e0b,
         type: 3}
       propertyPath: m_Name
-      value: Managers
+      value: TimeController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5070730e91411f4db6a1b969e8d3e0b, type: 3}
@@ -973,7 +1010,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1755098893 stripped
 RectTransform:
@@ -1010,5 +1047,5 @@ Transform:
   m_Children:
   - {fileID: 496732154}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

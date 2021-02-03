@@ -49,7 +49,7 @@ public class Building : MonoBehaviour, IShowable
     {
         BuildingPreview prevInstance = Instantiate(Preview, pose, Quaternion.identity);
 
-        prevInstance.PlacablePrice = menuShowItem.Price;
+        prevInstance.PlacablePrice = GetPrice();
         prevInstance.IsRotated = GetPlacable().IsRotated();
 
         prevInstance.LastPlacablePlace = GetPlacable().GridPlace;
@@ -110,6 +110,16 @@ public class Building : MonoBehaviour, IShowable
         }
 
         return Placable;
+    }
+
+    public ProductItemsList GetPrice()
+    {
+        if (menuShowItem.Price == null)
+        {
+            menuShowItem.Price = GetComponent<ProductItemsList>();
+        }
+
+        return menuShowItem.Price;
     }
 
     protected BuildingController GetBuildingController()

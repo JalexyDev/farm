@@ -66,9 +66,9 @@ public class Placer : MonoBehaviour
     {
         if (placablePreview != null)
         {
-            int price = placablePreview.IsJustShifting() ? 0 : placablePreview.PlacablePrice;
+            ProductItemsList products = placablePreview.IsJustShifting() ? null : placablePreview.PlacablePrice;
 
-            GetMenu().ShowMenu(new MenuShowItem(placablePreview.PlacableInfo, null, GetControllBtns(), price));
+            GetMenu().ShowMenu(new MenuShowItem(placablePreview.PlacableInfo, null, GetControllBtns(), products));
         }
     }
 
@@ -87,7 +87,7 @@ public class Placer : MonoBehaviour
         }
         else
         {
-            if (IsEnoughMoney(placablePrefab.PlacablePrice))
+            if (IsResourcesEnough(placablePrefab.PlacablePrice))
             {
                 ShowPlacablePreview(placablePrefab);
             }
@@ -160,7 +160,7 @@ public class Placer : MonoBehaviour
             if (newPlacable)
             {
                 // запрос был с оплатой
-                SpendMoney(placableInstance.GetComponent<IShowable>().GetMenuShowItem().Price);
+                SpendRecources(placableInstance.GetComponent<IShowable>().GetMenuShowItem().Price);
             }
             else
             {
@@ -239,19 +239,19 @@ public class Placer : MonoBehaviour
         return controlBtns;
     }
 
-    public bool IsEnoughMoney(int price)
+    public bool IsResourcesEnough(ProductItemsList products)
     {
-        if (stock == null)
-        {
-            stock = StockController.Instance;
-        }
-
-        return stock.IsMoneyEnough(price);
+        return GetStock().IsResourcesEnough(products);
     }
 
-    public void SpendMoney(int count)
+    public void SpendRecources(ProductItemsList products)
     {
-        stock.SpendMoney(count);
+        GetStock().SpendRecources(products);
+    }
+
+    public void AddRecources(ProductItemsList products)
+    {
+        GetStock().AddRecources(products);
     }
 
     public Camera GetMainCamera()
@@ -287,5 +287,15 @@ public class Placer : MonoBehaviour
         }
 
         return menu;
+    }
+
+    private StockController GetStock()
+    {
+        if (stock == null)
+        {
+            stock = StockController.Instance;
+        }
+
+        return stock;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 //todo класс хранящий списки всех продуктов и материалов в игре и позволяющий получать их по отдельности и списком
@@ -9,17 +8,8 @@ public class ProductController : MonoBehaviour
 {
     public static ProductController Instance;
 
-    [SerializeField] private List<RawEatableProduct> rawEatableProducts;
-    [SerializeField] private List<RawMaterialProduct> rawMaterialProducts;
-    [SerializeField] private List<EatableProduct> eatableProducts;
-    [SerializeField] private List<LiquidEtableProduct> liquidEtableProducts;
-    [SerializeField] private List<MaterialProduct> materialProducts;
+    public List<Product> Products;
 
-    public List<RawEatableProduct> RawEatableProducts { get => rawEatableProducts; set => rawEatableProducts = value; }
-    public List<RawMaterialProduct> RawMaterialProducts { get => rawMaterialProducts; set => rawMaterialProducts = value; }
-    public List<EatableProduct> EatableProducts { get => eatableProducts; set => eatableProducts = value; }
-    public List<LiquidEtableProduct> LiquidEtableProducts { get => liquidEtableProducts; set => liquidEtableProducts = value; }
-    public List<MaterialProduct> MaterialProducts { get => materialProducts; set => materialProducts = value; }
 
     private void Awake()
     {
@@ -38,56 +28,59 @@ public class ProductController : MonoBehaviour
         }
     }
 
-    public List<T> GetProdListSortedByName<T>(List<T> list) where T : AbstractProduct
+    //todo добавить получение списка имен продуктов или их номеров с использованием фильтра по ProductType
+
+    public List<Product> GetProdListSortedByName(List<Product> list)
     {
-        var copyList = new List<T>(list);
-        copyList.Sort(delegate (T prod1, T prod2)
+        var copyList = new List<Product>(list);
+        copyList.Sort(delegate (Product prod1, Product prod2)
         {
-            if (prod1.Name == null && prod2.Name == null) return 0;
-            else if (prod1.Name == null) return -1;
-            else if (prod2.Name == null) return 1;
-            else return prod1.Name.CompareTo(prod2.Name);
+            return CompareNames(prod1.GetMenuShowItem().Information.Name, prod2.GetMenuShowItem().Information.Name);
         });
 
         return copyList;
-
     }
 
-    public List<T> GetProdListSortedByPrice<T>(List<T> list) where T : AbstractProduct
+    public List<Product> GetProdListSortedByQuality<T>(List<Product> list)
     {
-        var copyList = new List<T>(list);
-        copyList.Sort(delegate (T prod1, T prod2)
+        var copyList = new List<Product>(list);
+        copyList.Sort(delegate (Product prod1, Product prod2)
         {
-            return prod1.Price.CompareTo(prod2.Price);
+            int qualityDif = ((int)prod1.Quality).CompareTo((int)prod2.Quality);
+            if (qualityDif == 0)
+            {
+                return CompareNames(prod1.GetMenuShowItem().Information.Name, prod2.GetMenuShowItem().Information.Name);
+            }
+
+            return qualityDif;
+
         });
 
         return copyList;
-
     }
 
-    public RawEatableProduct GetRawEatableProduct(RawEatableProdName name)
+    private int CompareNames(string name1, string name2)
     {
-        return RawEatableProducts[(int) name];
+        if (name1 == null && name2 == null) return 0;
+        else if (name1 == null) return -1;
+        else if (name2 == null) return 1;
+        else return name1.CompareTo(name2);
     }
 
-    public RawMaterialProduct GetRawMaterialProduct(RawMaterialProdName name)
+    public Product GetProduct(ProductNames name)
     {
-        return RawMaterialProducts[(int)name];
-    }
+        int nameIndex = (int)name;
+        if (Products == null || Products.Count == 0 || nameIndex < 0 || nameIndex > Products.Count)
+        {
+            return null;
+        }
 
-    public EatableProduct GetEatableProduct(EatableProdName name)
-    {
-        return EatableProducts[(int)name];
-    }
+        if (Products[nameIndex].NumberInList != nameIndex)
+        {
+            Products[nameIndex].NumberInList = nameIndex;
+        }
 
-    public MaterialProduct GetMaterialProduct(MaterialProdName name)
-    {
-        return MaterialProducts[(int)name];
-    }
-
-    public LiquidEtableProduct GetLiquidEtableProduct(LiquidEatableProdName name)
-    {
-        return LiquidEtableProducts[(int)name];
+        return Products[nameIndex];
     }
 }
 
