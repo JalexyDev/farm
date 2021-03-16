@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class AbstractPlant : MonoBehaviour, IShowable
+public abstract class AbstractPlant : MonoBehaviour, IShowable, IClickable
 {
     [Header("Информации о растении")]
     public MenuShowItem menuShowItem;
@@ -15,6 +15,9 @@ public abstract class AbstractPlant : MonoBehaviour, IShowable
     public float MinFactor = 1;
     public float MaxFactor = 1.1f;
     public float StepForFactor;
+
+    protected float currentAdditionFactor;
+    protected bool canHarvest;
 
     protected StateSwitcher stateSwitcher;
     protected PlantsController controller;
@@ -41,13 +44,6 @@ public abstract class AbstractPlant : MonoBehaviour, IShowable
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (EventSystem.current.IsPointerOverGameObject()) { return; }
-           
-        OnClick();
-    }
-
     public MenuShowItem GetMenuShowItem()
     {
         return menuShowItem;
@@ -61,8 +57,7 @@ public abstract class AbstractPlant : MonoBehaviour, IShowable
 
     protected abstract Action<TimeState> GetFinishStateAction();
 
-
-    protected virtual void OnClick()
+    public void OnClick()
     {
         if (Controls.OpenMenuDisabled)
         {
@@ -70,7 +65,7 @@ public abstract class AbstractPlant : MonoBehaviour, IShowable
         }
 
         GetPlantsController().CloseMenu();
-        GetPlantsController().ShowMenu(menuShowItem);
+        GetPlantsController().ShowRootMenu(menuShowItem);
     }
 
     protected virtual void InitFunctions()

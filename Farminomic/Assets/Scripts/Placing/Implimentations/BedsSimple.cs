@@ -30,11 +30,9 @@ public class BedsSimple : Building
                 }
             }
         });
-
-        RefreshAvailableFunctions();
     }
 
-    public void RefreshAvailableFunctions()
+    protected override void InitFunctions()
     {
         menuShowItem.Functions = new List<Function>();
 

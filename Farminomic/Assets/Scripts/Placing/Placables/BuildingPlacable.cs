@@ -5,7 +5,10 @@ public class BuildingPlacable : GroundPlacable
 {
     public Sprite Sprite;
     public Sprite SpriteRotated;
+    public float ColliderOffsetX;
+    public float ColliderOffsetXRotated;
     private SpriteRenderer spriteRenderer;
+    private Collider2D collider;
 
     private bool isRotated;
     private Action<bool> rotatedAdditionAction;
@@ -13,6 +16,7 @@ public class BuildingPlacable : GroundPlacable
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
     }
 
     public bool IsRotated()
@@ -26,6 +30,8 @@ public class BuildingPlacable : GroundPlacable
 
         this.isRotated = isRotated;
         spriteRenderer.sprite = isRotated ? SpriteRotated : Sprite;
+        float offsetX = isRotated ? ColliderOffsetXRotated : ColliderOffsetX;
+        collider.offset = new Vector2(offsetX, collider.offset.y);
 
         rotatedAdditionAction?.Invoke(isRotated);
     }

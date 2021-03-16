@@ -88,6 +88,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704411725679425821, guid: 99f079f93f53162458d5edd8e737fdcf,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.06417692
+      objectReference: {fileID: 0}
+    - target: {fileID: 704411725679425821, guid: 99f079f93f53162458d5edd8e737fdcf,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.11113572
+      objectReference: {fileID: 0}
+    - target: {fileID: 704411725679425821, guid: 99f079f93f53162458d5edd8e737fdcf,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0016770363
+      objectReference: {fileID: 0}
+    - target: {fileID: 704411725679425821, guid: 99f079f93f53162458d5edd8e737fdcf,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.05199015
+      objectReference: {fileID: 0}
+    - target: {fileID: 704411725679425821, guid: 99f079f93f53162458d5edd8e737fdcf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2793883508887298561, guid: 99f079f93f53162458d5edd8e737fdcf,
         type: 3}
       propertyPath: States.Array.size
@@ -742,7 +767,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2458296241577352932, guid: 99f079f93f53162458d5edd8e737fdcf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 99f079f93f53162458d5edd8e737fdcf, type: 3}
 --- !u!4 &651402021754581273 stripped
 Transform:

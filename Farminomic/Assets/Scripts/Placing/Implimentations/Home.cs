@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Home : Building
 {
-    private void Start()
+    protected override void InitFunctions()
     {
+        base.InitFunctions();
+
         foreach (Building building in GetBuildingController().Buildings)
         {
             Function function = new Function(building.menuShowItem.Information, () =>

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 // Todo добавлением возможностей игроку связанных со зданием
-public class Building : MonoBehaviour, IShowable
+public class Building : MonoBehaviour, IShowable, IClickable
 {
     // Отдельный префаб, задается в инспекторе
     public BuildingPreview Preview;
@@ -23,19 +23,12 @@ public class Building : MonoBehaviour, IShowable
         InitControlBtns();
     }
 
-    private void OnMouseDown()
-    {
-        if (EventSystem.current.IsPointerOverGameObject()) { return; }
-
-        OnClick();
-    }
-
     public MenuShowItem GetMenuShowItem()
     {
         return menuShowItem;
     }
 
-    protected virtual void OnClick()
+    public void OnClick()
     {
         if (Controls.OpenMenuDisabled)
         {
@@ -116,7 +109,7 @@ public class Building : MonoBehaviour, IShowable
     {
         if (menuShowItem.Price == null)
         {
-            menuShowItem.Price = GetComponent<ProductItemsList>();
+            menuShowItem.Price = new ProductItemsList();
         }
 
         return menuShowItem.Price;

@@ -313,14 +313,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Preview: {fileID: 4930127248159116714, guid: 83a30ad9bb08b1d46a39e742f51eacf5, type: 3}
   menuShowItem:
-    ShowingPrice: 100
+    ShowingPrice:
+      productItems: []
     Information:
       Name: "\u0413\u0440\u044F\u0434\u043A\u0438 \u0441 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430\u043C\u0438"
-      Icon: {fileID: 21300000, guid: a67361e1e6fff6b48be3795c76afcb23, type: 3}
       Description: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u043D\u044B\u0435
         \u0433\u0440\u044F\u0434\u043A\u0438, \u043D\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0445
         \u0440\u0430\u0441\u0442\u0443\u0442 \u0435\u0449\u0435 \u0431\u043E\u043B\u0435\u0435
         \u0432\u043A\u0443\u0441\u043D\u044B\u0435 \u0432\u043A\u0443\u0441\u043D\u044F\u0448\u043A\u0438."
+      Icon: {fileID: 21300000, guid: a67361e1e6fff6b48be3795c76afcb23, type: 3}
   placesForPlant:
   - {fileID: 8090805994834279713}
   - {fileID: 4464047421093960869}
@@ -511,22 +512,27 @@ PrefabInstance:
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.9175214
+      value: 0.17626467
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.92370033
+      value: 0.2165246
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.121485144
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.4383607
+      value: 0.11033356
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4281249904403970572, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
@@ -600,6 +606,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: da6e95c1194873745ae69a20e52096ea,
         type: 3}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: ColliderOffsetX
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: ColliderOffsetXRotated
+      value: 0.055
+      objectReference: {fileID: 0}
     - target: {fileID: 8441534779315466127, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Name

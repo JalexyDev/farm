@@ -94,15 +94,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Preview: {fileID: 1341534020994047724, guid: cad9744000aa65c488154735055868ae, type: 3}
-  Price: 200
-  Information:
-    Name: "\u0422\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0439  \u0437\u0430\u0432\u043E\u0434"
-    Sprite: {fileID: 21300000, guid: 3b584e83b7b74654a91e9c1cf20b1114, type: 3}
-    Description: "\u0417\u0430\u0432\u043E\u0434 \u0434\u043B\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430
-      \u0436\u0438\u0434\u043A\u0438\u0445 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432
-      \u0438 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u043E\u0432"
-  Sprite: {fileID: 21300000, guid: 3b584e83b7b74654a91e9c1cf20b1114, type: 3}
-  SpriteRotated: {fileID: 21300000, guid: ad05b0d5b7328204c9bcef836dbf24a3, type: 3}
+  menuShowItem:
+    ShowingPrice:
+      productItems: []
+    Information:
+      Name: 
+      Description: 
+      Icon: {fileID: 0}
 --- !u!1001 &5690688354758771104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,22 +121,49 @@ PrefabInstance:
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.88981885
+      value: 0.69178176
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.6876879
+      value: 0.56037855
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.0013015568
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.0026812553
+      value: -0.0097539425
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247613373897334774, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b584e83b7b74654a91e9c1cf20b1114,
+        type: 3}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: SpriteRotated
+      value: 
+      objectReference: {fileID: 21300000, guid: ad05b0d5b7328204c9bcef836dbf24a3,
+        type: 3}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: ColliderOffsetX
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199301840295199074, guid: b8a7f168a909f6246b15be048b750ccf,
+        type: 3}
+      propertyPath: ColliderOffsetXRotated
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 8441534779315466127, guid: b8a7f168a909f6246b15be048b750ccf,
         type: 3}

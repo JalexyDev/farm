@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 public class BedsPlant : AbstractPlant
 {
@@ -25,12 +26,25 @@ public class BedsPlant : AbstractPlant
         //todo если что-то нужно сделать в Awake делаем тут
     }
 
+    protected override void InitFunctions()
+    {
+        //todo сделать menuShowItem-ы для разных функций.
+
+        Function function = new Function(menuShowItem.Information, () =>
+        {
+            print("Func");
+        } );
+
+        menuShowItem.AddFunctionList(function);
+    }
+
     protected override Action<TimeState> GetBetweenStateAction()
     {
         return (TimeState) =>
         {
             SetSprite(TimeState.Sprite);
-            //todo установить какой мусор будет получен при прерывании роста.
+            canHarvest = false;
+            currentAdditionFactor += StepForFactor;
         };
     }
 
@@ -39,6 +53,7 @@ public class BedsPlant : AbstractPlant
         return (TimeState) =>
         {
             SetSprite(TimeState.Sprite);
+            canHarvest = true;
             //todo установить награду за сбор, заменить кнопку "Прервать рост" на "Собрать урожай"
         };
     }
@@ -47,8 +62,9 @@ public class BedsPlant : AbstractPlant
     {
         return (TimeState) =>
         {
-            //todo удалить с грядки мб перенести "Мусор" игроку
-            GetPlantsController().AddRecources(InterruptProducts * MaxFactor);
+            GetPlantsController().AddRecources(InterruptProducts * (MaxFactor + currentAdditionFactor));
+            currentAdditionFactor = 0;
+            canHarvest = false;
             Destroy(gameObject);
         };
     }
